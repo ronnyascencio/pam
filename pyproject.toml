@@ -1,0 +1,10 @@
+[project]
+name = "pam"
+version = "0.1.0"
+description = "Asset manager for Photographers or digital artists"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "pytest>=8.3.5",
+]
