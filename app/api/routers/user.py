@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends
 from models import User
 from passlib.context import CryptContext
 from pydantic import BaseModel, EmailStr
-from sqlmodel import Field, Session
+from sqlmodel import Field, Session, select
 from starlette import status
 
 """ Hasshed password"""
@@ -66,5 +66,5 @@ async def user_register(base_register: UserBaseRegister, session: SessionDep):
 
 
 @router.get("/all/", status_code=status.HTTP_200_OK)
-async def read_all_users(session: SessionDep) -> list[User]:
-    return session.exec(User).all()
+async def read_all_users(session: SessionDep):
+    return session.exec(select(User)).all()
